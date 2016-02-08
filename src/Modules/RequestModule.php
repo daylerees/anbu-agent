@@ -38,19 +38,16 @@ class RequestModule extends AbstractModule implements ModuleContract
     {
         $request = $app->request;
 
-        $headers = [];
-
-        foreach ($request->headers->all() as $key => $header) {
-            $headers[$key] = array_shift($header);
-        }
-
         $this->data['request'] = [
             'method'  => $request->getMethod(),
+            'path' => $request->path(),
             'url'     => $request->getUri(),
-            'headers' => $headers,
             'ips'     => $request->ips(),
-            'data'    => $request->all(),
             'server'  => $request->server(),
+            'query'  => $request->query(),
+            'input'  => $request->input(),
+            'json'  => $request->json(),
+            'headers' => $request->header(),
         ];
     }
 }

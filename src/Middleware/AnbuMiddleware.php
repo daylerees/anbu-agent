@@ -55,8 +55,6 @@ class AnbuMiddleware
          */
         $this->agent->afterHook();
 
-        $this->agent->report();
-
         return $response;
     }
 }

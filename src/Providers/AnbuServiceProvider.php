@@ -19,8 +19,24 @@ class AnbuServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        /**
+         * We need this enabled to gather queries.
+         */
+        $this->app->db->enableQueryLog();
+
+        /**
+         * Create the agent on framework bootstrap.
+         */
         $agent = new Agent($this->app);
+
+        /**
+         * Store in the container.
+         */
         $this->app->instance(Agent::class, $agent);
+
+        /**
+         * Fire module register hooks.
+         */
         $agent->registerHook();
     }
 }

@@ -94,16 +94,24 @@ class Agent
         foreach ($this->modules as $module) {
             $module->after($this->app);
         }
+
+        $this->report();
     }
 
+    /**
+     * Render the profile report.
+     *
+     * @return void
+     */
     public function report()
     {
         $report = [
-            'id' => $this->id,
-            'php' => phpversion(),
+            'id'      => $this->id,
+            'php'     => phpversion(),
             'laravel' => Application::VERSION,
+            'time'    => microtime(true) - LARAVEL_START,
+            'memory'  => memory_get_peak_usage(),
             'modules' => [],
-            'time' => microtime(true) - LARAVEL_START
         ];
 
         foreach ($this->modules as $module) {
