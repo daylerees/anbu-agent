@@ -109,6 +109,7 @@ class Agent
             'id'      => $this->id,
             'php'     => phpversion(),
             'laravel' => Application::VERSION,
+            'start'   => LARAVEL_START,
             'time'    => microtime(true) - LARAVEL_START,
             'memory'  => memory_get_peak_usage(),
             'modules' => [],
