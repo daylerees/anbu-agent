@@ -13,6 +13,18 @@ use Illuminate\Support\ServiceProvider;
 class AnbuServiceProvider extends ServiceProvider
 {
     /**
+     * Perform post-registration booting of services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->publishes([
+            __DIR__ . '/../../resources/config.php' => config_path('anbu.php'),
+        ]);
+    }
+
+    /**
      * Register the service provider.
      *
      * @return void
@@ -27,7 +39,7 @@ class AnbuServiceProvider extends ServiceProvider
         /**
          * Create the agent on framework bootstrap.
          */
-        $agent = new Agent($this->app);
+        $agent = $this->app->make(Agent::class);
 
         /**
          * Store in the container.

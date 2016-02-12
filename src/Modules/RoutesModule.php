@@ -31,17 +31,27 @@ class RoutesModule extends AbstractModule implements ModuleContract
      * Module after response hook.
      *
      * @param \Illuminate\Foundation\Application $app
+     * @param \Illuminate\Http\Response          $response
      *
      * @return void
      */
-    public function after(Application $app)
+    public function after(Application $app, $response)
     {
         foreach ($app->router->getRoutes() as $route) {
-            $this->data['routes'][] = [
-                'methods' => $route->getMethods(),
-                'path'    => $route->getPath(),
-                'name'    => $route->getName(),
-            ];
+
+            $newRoute['methods'] = $route->getMethods();
+            $newRoute['path']    = $route->getPath();
+            $newRoute['name']    = $route->getName();
+
+            $action = $route->getAction();
+
+            if ($controller = array_get($action, 'controller')) {
+                $newRoute['action'] = $controller;
+            } else {
+                $newRoute['action'] = 'Closure';
+            }
+
+            $this->data['routes'][] = $newRoute;
         }
 
         $current = $app->router->current();
@@ -50,6 +60,7 @@ class RoutesModule extends AbstractModule implements ModuleContract
             'methods' => $current->getMethods(),
             'path'    => $current->getPath(),
             'name'    => $current->getName(),
+            'action'  => $current->getAction()
         ];
     }
 }

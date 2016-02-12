@@ -31,23 +31,22 @@ class RequestModule extends AbstractModule implements ModuleContract
      * Module after response hook.
      *
      * @param \Illuminate\Foundation\Application $app
+     * @param \Illuminate\Http\Response          $response
      *
      * @return void
      */
-    public function after(Application $app)
+    public function after(Application $app, $response)
     {
-        $request = $app->request;
-
         $this->data['request'] = [
-            'method'  => $request->getMethod(),
-            'path' => $request->path(),
-            'url'     => $request->getUri(),
-            'ips'     => $request->ips(),
-            'server'  => $request->server(),
-            'query'  => $request->query(),
-            'input'  => $request->input(),
-            'json'  => $request->json(),
-            'headers' => $request->header(),
+            'method'  => $app->request->getMethod(),
+            'path'    => $app->request->path(),
+            'url'     => $app->request->getUri(),
+            'ips'     => $app->request->ips(),
+            'server'  => $app->request->server(),
+            'query'   => $app->request->query(),
+            'input'   => $app->request->input(),
+            'json'    => $app->request->json(),
+            'headers' => $app->request->header(),
         ];
     }
 }

@@ -53,7 +53,7 @@ class AnbuMiddleware
         /**
          * Fire module after hooks.
          */
-        $this->agent->afterHook();
+        $this->agent->afterHook($response);
 
         return $response;
     }

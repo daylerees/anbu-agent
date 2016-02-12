@@ -47,10 +47,11 @@ interface ModuleContract
      * Module after response hook.
      *
      * @param \Illuminate\Foundation\Application $app
+     * @param \Illuminate\Http\Response          $response
      *
      * @return void
      */
-    public function after(Application $app);
+    public function after(Application $app, $response);
 
     /**
      * Flatten a module for dispatch to service.
