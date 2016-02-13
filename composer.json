@@ -1,6 +1,8 @@
 {
-    "name": "daylerees/anbu-profiler-agent",
+    "name": "daylerees/anbu-agent",
     "description": "The Anbu Profiler service agent.",
+    "keywords": ["anbu", "agent", "profiler", "profiling", "dayle", "rees", "laravel"],
+    "type": "library",
     "authors": [
         {
             "name": "Dayle Rees",
