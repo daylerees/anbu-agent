@@ -14,7 +14,7 @@ class Agent
     /**
      * Reporting URL for button.
      */
-    const REPORT_URL = 'http://anbu.io/reports/%s';
+    const REPORT_URL = 'https://anbu.io/reports/%s';
 
     /**
      * Anbu request key.
