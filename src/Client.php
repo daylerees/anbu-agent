@@ -15,7 +15,7 @@ class Client
     /**
      * Service URL to report to.
      */
-    const SERVICE_URL = 'http://anbu.io/reports/submit';
+    const SERVICE_URL = 'https://anbu.io/reports/submit';
 
     /**
      * Anbu.io token.
