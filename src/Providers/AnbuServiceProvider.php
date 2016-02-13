@@ -19,9 +19,17 @@ class AnbuServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        /**
+         * Publish configuration.
+         */
         $this->publishes([
-            __DIR__ . '/../../resources/config.php' => config_path('anbu.php'),
+            __DIR__ . '/../../resources/config/config.php' => config_path('anbu.php'),
         ]);
+
+        /**
+         * Register view namespace.
+         */
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'anbu');
     }
 
     /**

@@ -48,7 +48,7 @@ class RoutesModule extends AbstractModule implements ModuleContract
             if ($controller = array_get($action, 'controller')) {
                 $newRoute['action'] = $controller;
             } else {
-                $newRoute['action'] = 'Closure';
+                $newRoute['action'] = '{Closure}';
             }
 
             $this->data['routes'][] = $newRoute;

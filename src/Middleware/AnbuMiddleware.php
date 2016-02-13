@@ -41,6 +41,13 @@ class AnbuMiddleware
     public function handle($request, Closure $next)
     {
         /**
+         * Skip middlewares if enabled.
+         */
+        if (!$this->agent->isEnabled()) {
+            return $next($request);
+        }
+
+        /**
          * Fire module before hooks.
          */
         $this->agent->beforeHook();
