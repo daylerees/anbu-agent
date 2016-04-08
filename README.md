@@ -8,7 +8,7 @@ Install Anbu service profider in your Laravel 5.2.* app:
 
     Anbu\Profiler\Providers\AnbuServiceProvider::class
     
-Install the Anbu global middleware: (`$middleware` in `App\Http\Kernal.php`)
+Install the Anbu global middleware: (`$middleware` in `App\Http\Kernel.php`)
 
     Anbu\Profiler\Middleware\AnbuMiddleware::class
     
